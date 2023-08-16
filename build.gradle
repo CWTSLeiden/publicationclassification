@@ -1,5 +1,7 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
+    id 'signing'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
     id 'com.palantir.git-version' version '3.0.0'
 }
@@ -27,7 +29,7 @@ jar {
    manifest {
         attributes('Implementation-Title': project.name,
             'Implementation-Version': project.version,
-            'Main-Class': "nl.cwts.publicationclassification.run.PublicationClassificationCreator")
+            'Main-Class': 'nl.cwts.publicationclassification.run.PublicationClassificationCreator')
    }
 }
 
@@ -37,4 +39,62 @@ shadowJar {
     archiveBaseName.set(project.name)
     archiveClassifier.set('')
     archiveVersion.set(project.version)
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/CWTSLeiden/publicationclassification"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+        maven {
+            name = "OSSRH"
+            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username = System.getenv("OSSRH_USERNAME")
+                password = System.getenv("OSSRH_PASSWORD")
+            }
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            pom {
+                name = "publicationclassification"
+                description = "Java package for creating a multi-level classification of scientific publications based on citation links between publications."
+                url = "https://github.com/CWTSLeiden/publicationclassification"
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "http://www.opensource.org/licenses/mit-license.php"
+                    }
+                }
+                developers {
+                    developer {
+                        name = "Nees Jan van Eck"
+                        email = "ecknjpvan@cwts.leidenuniv.nl"
+                        url = "https://github.com/neesjanvaneck"
+                        id = "neesjanvaneck"
+                    }
+                }
+                scm {
+                    connection = "scm:git@github.com:CWTSLeiden/publicationclassification.git"
+                    developerConnection = "scm:git@github.com:CWTSLeiden/publicationclassification.git"
+                    url = "https://github.com/CWTSLeiden/publicationclassification"
+                }
+            }
+        }
+    }
+}
+
+signing {
+    required { gradle.taskGraph.hasTask("publish") }
+    def signingKey = System.getenv("GPG_SIGNING_KEY")
+    def signingPassword = System.getenv("GPG_SIGNING_PASSWORD")
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign publishing.publications.mavenJava
 }
