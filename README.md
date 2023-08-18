@@ -1,10 +1,18 @@
 # publicationclassification
 
+[![Build master branch](https://github.com/CWTSLeiden/publicationclassification/workflows/Build%20main%20branch/badge.svg?branch=main)](https://github.com/CWTSLeiden/publicationclassification/actions)
+[![License: MIT](https://badgen.net/github/license/CWTSLeiden/publicationclassification?label=License&color=yellow)](https://github.com/CWTSLeiden/publicationclassification/blob/main/LICENSE)
+[![Latest release](https://badgen.net/github/release/CWTSLeiden/publicationclassification?label=Release)](https://github.com/CWTSLeiden/publicationclassification/releases)
+[![Maven Central version](https://badgen.net/maven/v/maven-central/nl.cwts/publicationclassification)](https://central.sonatype.com/artifact/nl.cwts/publicationclassification)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8263452.svg)](https://doi.org/10.5281/zenodo.8263452)
+
+## Introduction
+
 This Java package can be used to create a multi-level classification of scientific publications based on citation links between publications.
 
 The package uses the direct citation approach introduced by [Waltman and Van Eck (2012)](https://doi.org/10.1002/asi.22748) combined with the Leiden algorithm introduced by [Traag et al. (2019)](https://doi.org/10.1038/s41598-019-41695-z). The package also supports the extended direct citation approach introduced by [Waltman et al. (2020)](https://doi.org/10.1162/qss_a_00035).
 
-The publictionclassification package was developed by [Nees Jan van Eck](https://orcid.org/0000-0001-8448-4521) at the [Centre for Science and Technology Studies (CWTS)](https://www.cwts.nl) at [Leiden University](https://www.universiteitleiden.nl/en). It relies on the [networkanalysis](https://github.com/CWTSLeiden/networkanalysis) package that was developed by [Nees Jan van Eck](https://orcid.org/0000-0001-8448-4521), [Vincent Traag](https://orcid.org/0000-0003-3170-3879), and [Ludo Waltman](https://orcid.org/0000-0001-8249-1752).
+The publicationclassification package was developed by [Nees Jan van Eck](https://orcid.org/0000-0001-8448-4521) at the [Centre for Science and Technology Studies (CWTS)](https://www.cwts.nl) at [Leiden University](https://www.universiteitleiden.nl/en). It relies on the [networkanalysis](https://github.com/CWTSLeiden/networkanalysis) package that was developed by [Nees Jan van Eck](https://orcid.org/0000-0001-8448-4521), [Vincent Traag](https://orcid.org/0000-0003-3170-3879), and [Ludo Waltman](https://orcid.org/0000-0001-8249-1752).
 
 ## Documentation
 
