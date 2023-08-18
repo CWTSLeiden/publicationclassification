@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+type: "software"
+authors:
+  - family-names: "Van Eck"
+    given-names: "Nees Jan"
+    orcid: "https://orcid.org/0000-0001-8448-4521"
+    email: "ecknjpvan@cwts.leidenuniv.nl"
+    affiliation: "Centre for Science and Technology Studies (CWTS), Leiden University"
+title: "publicationclassification"
+abstract: "This Java package can be used to create a multi-level classification of scientific publications based on citation links between publications."
+keywords:
+  - publication classification
+  - scientific publications
+  - citation links
+  - multi-level classification
+  - clustering
+  - community detection
+  - clustering algorithm
+  - Leiden algorithm
+  - Java
+url: "https://github.com/CWTSLeiden/publicationclassification#readme"
+repository-code: "https://github.com/CWTSLeiden/publicationclassification"
+repository-artifact: "https://central.sonatype.com/artifact/nl.cwts/publicationclassification/"
+license: MIT
+version: 1.0.0
+date-released: 2023-08-17
