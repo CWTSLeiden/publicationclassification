@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import nl.cwts.networkanalysis.Network;
+import nl.cwts.util.LargeDoubleArray;
+import nl.cwts.util.LargeIntArray;
 
 public class DatabaseIO
 {
@@ -25,8 +27,8 @@ public class DatabaseIO
     public static Network readNetwork(String server, String database, String pubTable, String citLinkTable)
     {
         double[] pubWeight = null;
-        int[][] citLink = null;
-        double[] citLinkWeight = null;
+        LargeIntArray[] citLink = null;
+        LargeDoubleArray citLinkWeight = null;
 
         Connection connection = null;
         try
@@ -57,23 +59,25 @@ public class DatabaseIO
 
             // Read number of citation links.
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("select count(*) from " + citLinkTable);
+            resultSet = statement.executeQuery("select count_big(*) from " + citLinkTable);
             resultSet.next();
-            int nCitLinks = resultSet.getInt(1);
+            long nCitLinks = resultSet.getLong(1);
             statement.close();
 
-            citLink = new int[2][nCitLinks];
-            citLinkWeight = new double[nCitLinks];
+            citLink = new LargeIntArray[2];
+            citLink[0] = new LargeIntArray(nCitLinks);
+            citLink[1] = new LargeIntArray(nCitLinks);
+            citLinkWeight = new LargeDoubleArray(nCitLinks);
 
             // Read citation links.
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select pub_no1, pub_no2, cit_weight from " + citLinkTable + " order by pub_no1, pub_no2");
-            for (int i = 0; i < nCitLinks; i++)
+            for (long i = 0; i < nCitLinks; i++)
             {
                 resultSet.next();
-                citLink[0][i] = resultSet.getInt(1);
-                citLink[1][i] = resultSet.getInt(2);
-                citLinkWeight[i] = resultSet.getDouble(3);
+                citLink[0].set(i, resultSet.getInt(1));
+                citLink[1].set(i, resultSet.getInt(2));
+                citLinkWeight.set(i, resultSet.getDouble(3));
             }
             statement.close();
 

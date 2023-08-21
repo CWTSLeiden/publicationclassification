@@ -8,8 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import nl.cwts.networkanalysis.Network;
-import nl.cwts.util.DynamicDoubleArray;
-import nl.cwts.util.DynamicIntArray;
+import nl.cwts.util.LargeDoubleArray;
+import nl.cwts.util.LargeIntArray;
 
 public class FileIO
 {
@@ -29,11 +29,15 @@ public class FileIO
      */
     public static Network readNetwork(String pubFile, String citLinkFile)
     {
-        DynamicDoubleArray pubWeight = new DynamicDoubleArray(100);
-        DynamicIntArray[] citLink = new DynamicIntArray[2];
-        citLink[0] = new DynamicIntArray(100);
-        citLink[1] = new DynamicIntArray(100);
-        DynamicDoubleArray citLinkWeight = new DynamicDoubleArray(100);
+        LargeDoubleArray pubWeight = new LargeDoubleArray(0);
+        pubWeight.ensureCapacity(100);
+        LargeIntArray[] citLink = new LargeIntArray[2];
+        citLink[0] = new LargeIntArray(0);
+        citLink[0].ensureCapacity(100);
+        citLink[1] = new LargeIntArray(0);
+        citLink[1].ensureCapacity(100);
+        LargeDoubleArray citLinkWeight = new LargeDoubleArray(0);
+        citLinkWeight.ensureCapacity(100);
 
         BufferedReader reader = null;
         // Read publications file.
@@ -153,12 +157,9 @@ public class FileIO
 
         // Create citation network.
         Network citNetwork = null;
-        int[][] citLink2 = new int[2][];
-        citLink2[0] = citLink[0].toArray();
-        citLink2[1] = citLink[1].toArray();
         try
         {
-            citNetwork = new Network(pubWeight.toArray(), citLink2, citLinkWeight.toArray(), true, true);
+            citNetwork = new Network(pubWeight.toArray(), citLink, citLinkWeight, true, true);
         }
         catch (IllegalArgumentException e)
         {
