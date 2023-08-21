@@ -22,7 +22,7 @@ public class PublicationClassificationCreator
      * Description text.
      */
     public static final String DESCRIPTION
-        = "PublicationClassificationCreator version 1.0.0\n"
+        = "PublicationClassificationCreator version 1.1.0\n"
           + "By Nees Jan van Eck\n"
           + "Centre for Science and Technology Studies (CWTS), Leiden University\n";
 

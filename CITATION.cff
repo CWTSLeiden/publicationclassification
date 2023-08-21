@@ -24,5 +24,5 @@ repository-code: "https://github.com/CWTSLeiden/publicationclassification"
 repository-artifact: "https://central.sonatype.com/artifact/nl.cwts/publicationclassification/"
 license: MIT
 doi: 10.5281/zenodo.8263452
-version: 1.0.0
-date-released: 2023-08-18
+version: 1.1.0
+date-released: 2023-08-21

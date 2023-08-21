@@ -26,14 +26,14 @@ Documentation of the source code of publicationclassification is provided in the
 <dependency>
     <groupId>nl.cwts</groupId>
     <artifactId>publicationclassification</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```
-implementation group: 'nl.cwts', name: 'publicationclassification', version: '1.0.0'
+implementation group: 'nl.cwts', name: 'publicationclassification', version: '1.1.0'
 ```
 
 ## Usage
@@ -44,13 +44,13 @@ Instructions for compiling the source code of the package are provided [below](#
 Use the command-line tool `PublicationClassificationCreator` to create a publication classification. The tool can be run as follows:
 
 ```
-java -cp publicationclassification-1.0.0.jar nl.cwts.publicationclassification.PublicationClassificationCreator
+java -cp publicationclassification-1.1.0.jar nl.cwts.publicationclassification.PublicationClassificationCreator
 ```
 
 If no further arguments are provided, the following usage notice will be displayed:
 
 ```
-PublicationClassificationCreator version 1.0.0
+PublicationClassificationCreator version 1.1.0
 By Nees Jan van Eck
 Centre for Science and Technology Studies (CWTS), Leiden University
 
@@ -166,7 +166,7 @@ You also have a text file `cit_links.txt`
 The `PublicationClassificationCreator` tool can then be run as follows:
 
 ```
-java -cp publicationclassification-1.0.0.jar nl.cwts.publicationclassification.PublicationClassificationCreator pubs.txt cit_links.txt classification.txt true 100 4e-4 25 2e-4 250 7e-5 1000
+java -cp publicationclassification-1.1.0.jar nl.cwts.publicationclassification.PublicationClassificationCreator pubs.txt cit_links.txt classification.txt true 100 4e-4 25 2e-4 250 7e-5 1000
 ```
 
 The publication classification created by the tool can be found in the text file `classification.txt`:
@@ -188,7 +188,7 @@ The publication classification created by the tool can be found in the text file
 The tool displays the following output:
 
 ```
-PublicationClassificationCreator version 1.0.0
+PublicationClassificationCreator version 1.1.0
 By Nees Jan van Eck
 Centre for Science and Technology Studies (CWTS), Leiden University
 
